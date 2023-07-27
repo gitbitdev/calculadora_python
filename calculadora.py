@@ -1,5 +1,11 @@
 import tkinter as tk
 
+firstNum = 0
+secondNum = 0
+clicksInfo = list()
+firstNumDigits = 0
+secondNumDigits = 0
+
 window = tk.Tk()
 window.title("Calculadora")
 label = tk.Label(window, text="0", padx=80, pady=20)
