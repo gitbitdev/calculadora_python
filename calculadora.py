@@ -2,6 +2,7 @@ import tkinter as tk
 
 window = tk.Tk()
 window.title("Calculadora")
+label = tk.Label(window, text="0", padx=80, pady=20)
 button_0 = tk.Button(window, text="0", padx=20, pady=20)
 button_1 = tk.Button(window, text="1", padx=20, pady=20)
 button_2 = tk.Button(window, text="2", padx=20, pady=20)
@@ -19,6 +20,7 @@ button_suma = tk.Button(window, text="+", padx=20, pady=20)
 button_decimal = tk.Button(window, text=",", padx=20, pady=20)
 button_igual = tk.Button(window, text="=", padx=20, pady=20)
 
+label.grid(row=0, columnspan=4, sticky="nsew")
 button_0.grid(row=4, column=0, sticky="nsew")
 button_1.grid(row=3, column=0, sticky="nsew")
 button_2.grid(row=3, column=1, sticky="nsew")
