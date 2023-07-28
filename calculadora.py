@@ -2,7 +2,7 @@ import tkinter as tk
 
 firstNum = ""
 secondNum = ""
-result = 0
+result = 0.0
 clicksInfo = list()
 firstNumDigits = 0
 secondNumDigits = 0
@@ -31,11 +31,12 @@ def buttonClicked(numOrSym, isANumber):
         firstNumList = clicksInfo[:firstNumDigits]
         firstNumListStr = [str(num) for num in firstNumList]
         firstNum = "".join(firstNumListStr)
-        firstNum = int(firstNum)
+        firstNum = float(firstNum)
         secondNumList = clicksInfo[secondNumDigits+1:]
         secondNumListStr = [str(num) for num in secondNumList]
         secondNum = "".join(secondNumListStr)
         secondNum = int(secondNum)
+        secondNum = float(secondNum)
         if clicksInfo[firstNumDigits] == "/":
             result = firstNum / secondNum
         elif clicksInfo[firstNumDigits] == "*":
