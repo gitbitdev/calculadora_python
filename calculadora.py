@@ -12,7 +12,7 @@ onSecondNum = False
 
 
 def buttonClicked(numOrSym, isANumber):
-    global clicksInfo, onFirstNum, onSecondNum, firstNumDigits, secondNumDigits, firstNum, secondNum, result
+    global clicksInfo, onFirstNum, onSecondNum, firstNumDigits, secondNumDigits, firstNum, secondNum, result, seenNumbers
     if isANumber and onFirstNum:
         firstNumDigits += 1
         clicksInfo.append(numOrSym)
@@ -46,16 +46,10 @@ def buttonClicked(numOrSym, isANumber):
             result = firstNum - secondNum
         elif clicksInfo[firstNumDigits] == "+":
             result = firstNum + secondNum
-
-        print(result)
-
-    print(clicksInfo)
-    print(firstNumDigits)
-    print(secondNumDigits)
-    print(onFirstNum)
-    print(onSecondNum)
-    print("-------------")
-
+        clicksInfo.append("=")
+        clicksInfo.append(result)
+    seenNumbers = [str(num) for num in clicksInfo]
+    label.config(text=seenNumbers)
 
 def resetLabel():
     global clicksInfo, firstNumDigits, secondNumDigits, seenNumbers, onFirstNum, onSecondNum, result
