@@ -1,24 +1,75 @@
 import tkinter as tk
 
-firstNum = 0
-secondNum = 0
+firstNum = ""
+secondNum = ""
+result = 0
 clicksInfo = list()
 firstNumDigits = 0
 secondNumDigits = 0
 seenNumbers = ""
+onFirstNum = True
+onSecondNum = False
 
 
 def buttonClicked(numOrSym, isANumber):
-    global clicksInfo
-    clicksInfo.append(numOrSym)
+    global clicksInfo, onFirstNum, onSecondNum, firstNumDigits, secondNumDigits, firstNum, secondNum, result
+    if isANumber and onFirstNum:
+        firstNumDigits += 1
+        clicksInfo.append(numOrSym)
+    elif isANumber == False and numOrSym != "=" and numOrSym != "." and onFirstNum:
+        onFirstNum = False
+        onSecondNum = True
+        clicksInfo.append(numOrSym)
+        button_division.config(state="disabled")
+        button_multiplicacion.config(state="disabled")
+        button_resta.config(state="disabled")
+        button_suma.config(state="disabled")
+    elif isANumber and onSecondNum:
+        secondNumDigits += 1
+        clicksInfo.append(numOrSym)
+    elif isANumber == False and numOrSym == "=":
+        firstNumList = clicksInfo[:firstNumDigits]
+        firstNumListStr = [str(num) for num in firstNumList]
+        firstNum = "".join(firstNumListStr)
+        firstNum = int(firstNum)
+        secondNumList = clicksInfo[secondNumDigits+1:]
+        secondNumListStr = [str(num) for num in secondNumList]
+        secondNum = "".join(secondNumListStr)
+        secondNum = int(secondNum)
+        print(f"Primer numero: {firstNumList}, {firstNum}")
+        print(f"Segundo numero: {secondNumList}, {secondNum}")
+        if clicksInfo[firstNumDigits] == "/":
+            result = firstNum / secondNum
+        elif clicksInfo[firstNumDigits] == "*":
+            result = firstNum * secondNum
+        elif clicksInfo[firstNumDigits] == "-":
+            result = firstNum - secondNum
+        elif clicksInfo[firstNumDigits] == "+":
+            result = firstNum + secondNum
+
+        print(result)
+
     print(clicksInfo)
+    print(firstNumDigits)
+    print(secondNumDigits)
+    print(onFirstNum)
+    print(onSecondNum)
+    print("-------------")
+
 
 def resetLabel():
-    global clicksInfo, firstNumDigits, secondNumDigits, seenNumbers
+    global clicksInfo, firstNumDigits, secondNumDigits, seenNumbers, onFirstNum, onSecondNum, result
     clicksInfo.clear()
+    button_division.config(state="normal")
+    button_multiplicacion.config(state="normal")
+    button_resta.config(state="normal")
+    button_suma.config(state="normal")
     firstNumDigits = 0
     secondNumDigits = 0
-    seenNumbers = ""
+    onFirstNum = True
+    onSecondNum = False
+    seenNumbers = "0"
+    result = 0
     label.config(text=seenNumbers)
 
 window = tk.Tk()
