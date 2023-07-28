@@ -36,8 +36,6 @@ def buttonClicked(numOrSym, isANumber):
         secondNumListStr = [str(num) for num in secondNumList]
         secondNum = "".join(secondNumListStr)
         secondNum = int(secondNum)
-        print(f"Primer numero: {firstNumList}, {firstNum}")
-        print(f"Segundo numero: {secondNumList}, {secondNum}")
         if clicksInfo[firstNumDigits] == "/":
             result = firstNum / secondNum
         elif clicksInfo[firstNumDigits] == "*":
