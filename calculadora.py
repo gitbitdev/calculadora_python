@@ -2,7 +2,7 @@ import tkinter as tk
 
 firstNum = ""
 secondNum = ""
-result = 0
+result = 0.0
 clicksInfo = list()
 firstNumDigits = 0
 secondNumDigits = 0
